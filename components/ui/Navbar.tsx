@@ -13,7 +13,8 @@ const navLinks = [
 export default function Navbar() {
   return (
     <nav className="absolute top-[34px] left-1/2 -translate-x-1/2 w-full max-w-[1360px] h-[68px] border border-white flex items-center justify-between px-10 z-50 bg-black/10 backdrop-blur-sm">
-      <div className="relative w-[131px] h-[38px]">
+      <div className="relative w-[131px] h-[38px] ">
+        <Link href="/">
         <Image
           src="/images/ieee-logo.svg"
           alt="IEEE Logo"
@@ -21,6 +22,7 @@ export default function Navbar() {
           className="object-contain"
           priority
         />
+        </Link>
       </div>
       <div className="flex gap-10">
         {navLinks.map((link) => (
