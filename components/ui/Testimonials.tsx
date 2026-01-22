@@ -42,7 +42,7 @@ export default function Testimonials() {
   };
 
   return (
-    <section className="relative w-full pb-0 flex flex-col items-center -mt-[50px] sm:mt-0 pt-0 sm:pt-20 md:pt-24 lg:pt-30 px-3 sm:px-4 md:px-6 lg:px-8">
+    <section className="relative w-full pb-8 sm:pb-0 flex flex-col items-center -mt-[50px] sm:mt-0 pt-8 sm:pt-20 md:pt-24 lg:pt-30 px-3 sm:px-4 md:px-6 lg:px-8 overflow-x-hidden">
 
       {/* Separator - constrained to side lines but preserving unique slope */}
       <div className="absolute top-0 left-[5%] sm:left-[4%] md:left-[3%] lg:left-[2.5%] xl:left-[2.25%] right-[5%] sm:right-[4%] md:right-[3%] lg:right-[2.5%] xl:right-[2.25%] h-[60px] sm:h-[80px] md:h-[100px] lg:h-[110px] xl:h-[123px] my-10 pointer-events-none -z-10 opacity-60 sm:opacity-70 md:opacity-80">
@@ -51,11 +51,11 @@ export default function Testimonials() {
         </div>
       </div>
 
-      <h2 className="font-angkor text-[28px] leading-[1.1] sm:text-[40px] md:text-[50px] lg:text-[60px] xl:text-[75px] text-white mb-6 sm:mb-8 md:mb-12 xl:mb-20 absolute xl:absolute top-[30px] sm:top-[65px] md:top-[60px] xl:top-[80px] right-[1%] sm:right-[4%] md:right-[7%] xl:right-[5%] z-10 text-right xl:text-right mr-[30px] sm:mr-0">
+      <h2 className="font-angkor text-[28px] leading-[1.1] sm:text-[40px] md:text-[50px] lg:text-[60px] xl:text-[75px] text-white mb-8 sm:mb-8 md:mb-12 xl:mb-20 absolute xl:absolute top-[70px] sm:top-[65px] md:top-[60px] xl:top-[80px] right-[1%] sm:right-[4%] md:right-[7%] xl:right-[5%] z-10 text-right xl:text-right mr-[30px] sm:mr-0">
         TESTIMONIALS
       </h2>
 
-      <div className="relative w-full max-w-[1400px] overflow-hidden mx-auto pt-[44px] sm:pt-20 md:pt-24 xl:pt-[240px]">
+      <div className="relative w-full max-w-[1400px] overflow-hidden mx-auto pt-[80px] sm:pt-20 md:pt-24 xl:pt-[240px] mb-0 sm:mb-0">
         {/* Carousel Container */}
         <div
           className="flex transition-transform duration-500 ease-in-out"
@@ -66,9 +66,9 @@ export default function Testimonials() {
           {extendedTestimonials.map((testimonial, index) => (
             <div
               key={`${testimonial.id}-${index}`}
-              className="relative flex-shrink-0 w-full flex justify-center px-2"
+              className="relative flex-shrink-0 w-full flex justify-center px-2 sm:px-2"
             >
-              <div className="relative w-full max-w-[548px] min-h-[250px] sm:min-h-[280px] xl:min-h-[293px] bg-[#d9d9d9] rounded-sm p-4 sm:p-6 md:p-8 xl:p-10 shadow-lg">
+              <div className="relative w-full max-w-[90%] sm:max-w-[548px] min-h-[250px] sm:min-h-[280px] xl:min-h-[293px] bg-[#d9d9d9] rounded-sm p-4 sm:p-6 md:p-8 xl:p-10 shadow-lg mx-auto sm:mx-0 mt-4 mb-0 sm:my-0">
                 <div className="absolute top-4 sm:top-6 md:top-8 xl:top-10 left-4 sm:left-6 md:left-8 xl:left-10 w-[40px] sm:w-[50px] md:w-[60px] xl:w-[66px] h-[40px] sm:h-[50px] md:h-[60px] xl:h-[66px] rounded-full overflow-hidden">
                   <Image src="/images/ellipse13.svg" alt="Avatar" fill className="object-cover" />
                 </div>
@@ -92,8 +92,8 @@ export default function Testimonials() {
           ))}
         </div>
 
-        {/* Navigation Arrows */}
-        <div className="absolute left-0 right-0 flex justify-between px-4 sm:px-8 md:px-12 xl:px-20 top-[calc(50%)] -translate-y-1/2 pointer-events-none z-20">
+        {/* Navigation Arrows - Hidden on mobile, visible on tablet and above */}
+        <div className="hidden sm:flex absolute left-0 right-0 justify-between px-4 sm:px-8 md:px-12 xl:px-20 top-[calc(50%)] -translate-y-1/2 pointer-events-none z-20">
           <button
             onClick={goToPrev}
             className="relative w-[20px] sm:w-[22px] md:w-[24px] xl:w-[25px] h-[40px] sm:h-[50px] md:h-[55px] xl:h-[60px] rotate-180 pointer-events-auto cursor-pointer hover:opacity-80 transition-opacity"

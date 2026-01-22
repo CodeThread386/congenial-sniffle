@@ -17,11 +17,19 @@
   --font-sarpanch: var(--font-sarpanch);
 }
 
-html, body {
+html {
   overflow-x: hidden;
   width: 100%;
-  min-width: 640px;
   max-width: 100vw;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+  position: relative;
 }
 
 body {
@@ -71,11 +79,7 @@ body {
     min-width: 44px;
   }
 
-  /* Better spacing for mobile */
-  section {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
+  /* Better spacing for mobile - removed to allow component-specific padding */
 
   /* Optimize images for mobile */
   img {
@@ -83,15 +87,23 @@ body {
     height: auto;
   }
 
-  /* Prevent horizontal scroll */
-  * {
+  /* Prevent horizontal scroll - more targeted approach */
+  img, svg, video, iframe {
     max-width: 100%;
+    height: auto;
   }
 
   /* Better text readability */
   p, span, div {
     word-wrap: break-word;
     overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  /* Prevent text from being too small */
+  * {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
   }
 
   /* Hero Section Mobile Refinements */
@@ -101,13 +113,13 @@ body {
 
   /* Hero title text size reduction on mobile */
   .hero-title {
-    font-size: 32px !important;
+    font-size: 28px !important;
     line-height: 1.1 !important;
   }
 
   /* Hero subtitle text size reduction on mobile */
   .hero-subtitle {
-    font-size: 14px !important;
+    font-size: 12px !important;
     line-height: 1.3 !important;
   }
 
@@ -116,13 +128,40 @@ body {
     display: none !important;
   }
 
-  /* FAQ Section - Ensure content stays within boundaries on mobile */
-  .faq-section {
-    max-width: 80% !important;
+  /* Mobile content wrapper - keep ALL content inside side lines (5% each side) */
+  .mobile-content-bound {
+    width: 90% !important;
+    max-width: 90vw !important;
     margin-left: auto !important;
     margin-right: auto !important;
-    padding-left: 2rem !important;
-    padding-right: 2rem !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .mobile-content-bound * {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Ensure all sections on mobile respect boundaries */
+  section {
+    overflow-x: hidden !important;
+  }
+
+  /* Ensure images and media don't overflow */
+  img, svg, video, iframe, canvas {
+    max-width: 100% !important;
+    height: auto;
+  }
+
+  /* Ensure content elements use box-sizing */
+  div, p, span, h1, h2, h3, h4, h5, h6, input, button, form {
+    box-sizing: border-box;
+  }
+
+  /* FAQ Section - Ensure content stays within boundaries on mobile */
+  .faq-section {
     overflow-x: hidden !important;
   }
 
@@ -138,16 +177,23 @@ body {
   }
 }
 
+/* Very Small Mobile (up to 360px) */
+@media (max-width: 360px) {
+  body {
+    font-size: 12px;
+  }
+
+  /* Ensure touch targets are still accessible */
+  button, a, input, select, textarea {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
 /* Small Mobile (up to 480px) */
 @media (max-width: 480px) {
   body {
     font-size: 13px;
-  }
-
-  /* Reduce padding on very small screens */
-  .container, section {
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
   }
 }
 
@@ -155,6 +201,12 @@ body {
 @media (min-width: 641px) and (max-width: 768px) {
   body {
     font-size: 15px;
+  }
+
+  /* Optimize spacing for tablet portrait */
+  section {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 }
 
@@ -170,19 +222,39 @@ body {
   body {
     font-size: 16px;
   }
+
+  /* Optimize for tablet landscape */
+  section {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 }
 
-/* Desktop (1025px and above) */
-@media (min-width: 1025px) {
+/* Desktop (1025px to 1279px) */
+@media (min-width: 1025px) and (max-width: 1279px) {
   body {
     font-size: 16px;
   }
 }
 
-/* Large Desktop (1280px and above) */
-@media (min-width: 1280px) {
+/* Large Desktop (1280px to 1919px) */
+@media (min-width: 1280px) and (max-width: 1919px) {
   body {
     font-size: 18px;
+  }
+}
+
+/* Extra Large Desktop (1920px and above) */
+@media (min-width: 1920px) {
+  body {
+    font-size: 20px;
+  }
+
+  /* Constrain max width for ultra-wide screens */
+  main {
+    max-width: 1920px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
@@ -211,8 +283,13 @@ body {
   /* Make hero section more compact */
   .hero-section {
     min-height: auto;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  /* Reduce heading sizes in landscape */
+  h1, h2, h3 {
+    font-size: 0.9em;
   }
 }
 

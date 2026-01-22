@@ -51,7 +51,7 @@ export default function CountdownTimer() {
   }, []);
 
   return (
-    <div className="relative w-full xl:w-[297%] h-[160px] sm:h-[200px] md:h-[250px] lg:h-[280px] xl:h-[320px] flex items-center justify-center font-sarpanch text-white z-30 px-2 sm:px-3 md:px-4 xl:px-0">
+    <div className="relative w-[140px] sm:w-[180px] md:w-[220px] lg:w-[260px] xl:w-[297%] h-[120px] sm:h-[200px] md:h-[250px] lg:h-[280px] xl:h-[320px] flex items-center justify-center font-sarpanch text-white z-30 px-2 sm:px-3 md:px-4 xl:px-0">
       {/* Background Banner with angled ends */}
       <div className="absolute inset-0 z-0">
         <Image src="/images/vector20.svg" alt="Timer Background" fill className="object-cover" sizes="100vw" />

@@ -10,7 +10,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#03396c] overflow-x-hidden relative w-full max-w-full">
+    <main className="min-h-screen bg-[#03396c] overflow-x-hidden relative w-full max-w-full box-border">
 
       {/* Global Background Elements */}
       <div className="absolute inset-0 pointer-events-none z-0">
