@@ -2,99 +2,63 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="relative w-full min-h-[900px] flex flex-col justify-center px-[86px] pt-[100px] overflow-hidden">
-       
-      {/* Background vector top */}
-       <div className="absolute top-[0.5px] left-[0.5px] w-full h-[33px] z-10">
-         <Image src="/images/vector10.svg" alt="Decoration" fill className="object-cover" />
-       </div>
+    <section className="relative w-full h-screen flex flex-col px-[2.25%] pt-[calc(2.25%+68px+20px)] pb-0 overflow-hidden">
 
-      <div className="relative z-10 w-full max-w-[1440px] mx-auto flex flex-col xl:flex-row items-center xl:items-start justify-between">
-        
-        {/* Left Content */}
-        <div className="text-white font-space-grotesk font-bold relative z-20 mt-20">
-            {/* The 10th block */}
+      <div className="relative z-10 w-full h-full flex flex-col xl:flex-row items-start xl:items-start gap-8 xl:gap-12">
+
+        {/* Left Section with ITC Logo and Title */}
+        <div className="flex flex-col items-start flex-1 relative z-20 xl:min-w-[700px]">
+          {/* ITC Logo - Smaller and more to the right */}
+          <div className="relative w-[80px] h-[80px] xl:w-[100px] xl:h-[100px] ml-8 xl:ml-10 mb-4">
+            <Image
+              src="/itc-logo.svg"
+              alt="ITC Logo"
+              fill
+              className="object-contain"
+              priority
+            />
+          </div>
+
+          {/* Title and Subtitle - Below ITC Logo */}
+          <div className="text-white font-space-grotesk font-bold ml-8 xl:ml-10">
+            {/* Main Title */}
             <div className="relative">
-                <div className="flex items-baseline">
-                    <span className="text-[150px] font-urbanist font-bold leading-none tracking-tighter">10</span>
-                    <span className="text-[38px] ml-2 mb-auto mt-4">th</span>
-                </div>
-                
-                <div className="text-[77px] leading-tight whitespace-nowrap">
-                    <p>IEEE International</p>
-                    <p>Test Conference</p>
-                    <p>INDIA</p>
-                </div>
+              <div className="text-[50px] xl:text-[65px] leading-tight">
+                <p className="whitespace-nowrap">10th IEEE International</p>
+                <p>Test Conference</p>
+                <p>INDIA</p>
+              </div>
             </div>
 
-            {/* Subtitle - moved from AboutUs */}
-            <h3 className="font-space-grotesk font-bold text-[26px] mt-8 max-w-[600px] leading-normal uppercase">
-                An initiative towards India’s semiconductor ecosystem
+            {/* Subtitle */}
+            <h3 className="font-space-grotesk font-bold text-[18px] xl:text-[24px] mt-4 xl:mt-5 max-w-[600px] leading-normal uppercase">
+              AN INITIATIVE TOWARDS INDIA'S<br />
+              SEMICONDUCTOR ECOSYSTEM
             </h3>
+          </div>
         </div>
 
-        {/* Right Content - Illustration */}
-        <div className="relative w-full max-w-[800px] h-[600px] -mt-20 xl:mt-0 xl:-mr-20 pointer-events-none">
-             {/* Isometric Illustration */}
-            <div className="absolute inset-0">
-               <Image 
-                 src="/images/arduino.svg" 
-                 alt="PCB Illustration" 
-                 fill 
-                 className="object-contain"
-                 priority
-               />
-            </div>
+        {/* Circuit Image - Right side, extends from top to bottom line */}
+        <div className="relative w-full xl:w-[48%] pointer-events-none flex-shrink-0 h-full overflow-hidden">
+          <div className="relative w-full h-full">
+            <Image
+              src="/images/arduino.svg"
+              alt="Circuit Illustration"
+              fill
+              className="object-contain object-bottom object-left"
+              priority
+            />
+          </div>
         </div>
       </div>
-      
-      {/* Timer Section - Bottom Right */}
-      <div className="absolute bottom-[0px] right-0 w-[809px] h-[130px] hidden xl:block z-30">
-         {/* Background Shape */}
-         <div className="absolute inset-0 z-0">
-            <Image src="/images/vector20.svg" alt="Timer Background" fill className="object-cover" />
-         </div>
-         
-         {/* Timer Content - Inside the div */}
-         <div className="relative z-10 w-full h-full flex items-center justify-center gap-12 font-sarpanch text-white pb-4 pr-10">
-              <div className="flex flex-col items-center">
-                <span className="text-[60px] leading-none font-bold">6</span>
-                <span className="text-[14px] tracking-wider">MONTHS</span>
-              </div>
-              <div className="flex flex-col items-center">
-                <span className="text-[60px] leading-none font-bold">14</span>
-                <span className="text-[14px] tracking-wider">DAYS</span>
-              </div>
-               <div className="flex flex-col items-center">
-                <span className="text-[60px] leading-none font-bold">6</span>
-                <span className="text-[14px] tracking-wider">HOURS</span>
-              </div>
-               <div className="flex flex-col items-center">
-                <span className="text-[60px] leading-none font-bold">14</span>
-                <span className="text-[14px] tracking-wider">MONTHS</span>
-              </div>
-         </div>
-      </div>
 
-      {/* Timer Section - Mobile */}
-      <div className="xl:hidden w-full mt-10 flex flex-wrap justify-center gap-6 font-sarpanch text-white pb-10">
-            <div className="flex flex-col items-center bg-white/10 rounded p-4 min-w-[100px]">
-                <span className="text-[40px] leading-none font-bold">6</span>
-                <span className="text-[12px] tracking-wider">MONTHS</span>
-            </div>
-            <div className="flex flex-col items-center bg-white/10 rounded p-4 min-w-[100px]">
-                <span className="text-[40px] leading-none font-bold">14</span>
-                <span className="text-[12px] tracking-wider">DAYS</span>
-            </div>
-               <div className="flex flex-col items-center bg-white/10 rounded p-4 min-w-[100px]">
-                <span className="text-[40px] leading-none font-bold">6</span>
-                <span className="text-[12px] tracking-wider">HOURS</span>
-            </div>
-               <div className="flex flex-col items-center bg-white/10 rounded p-4 min-w-[100px]">
-                <span className="text-[40px] leading-none font-bold">14</span>
-                <span className="text-[12px] tracking-wider">MONTHS</span>
-            </div>
-      </div>
+      {/* Horizontal Line at the end of Hero Section */}
+      {/* <div 
+        className="absolute bottom-0 left-[2.25%] right-[2.25%] h-[2px] hidden xl:block"
+        style={{
+          backgroundImage: 'repeating-linear-gradient(to right, rgba(255, 255, 255, 1) 0px, rgba(255, 255, 255, 1) 10px, transparent 10px, transparent 20px)'
+        }}
+      ></div> */}
 
     </section>
   );
