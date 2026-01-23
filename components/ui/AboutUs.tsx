@@ -21,14 +21,14 @@ export default function AboutUs() {
       </div>
 
       {/* Mobile: heading only - positioned close to zig-zag */}
-      <div className="sm:hidden w-full max-w-full box-border absolute top-[25px] left-[5%] right-[5%] z-20">
-        <h2 className="font-angkor text-[28px] leading-tight text-white text-left">
+      <div className="sm:hidden w-full max-w-full box-border absolute top-[25px] left-5 z-20">
+        <h2 className="font-angkor text-[28px] leading-tight text-white text-left ">
           ABOUT US
         </h2>
       </div>
 
       {/* Tablet: heading + timer side by side - positioned close to zig-zag */}
-      <div className="hidden sm:block xl:hidden w-full max-w-full box-border absolute top-[70px] md:top-[90px] left-[4%] md:left-[3%] right-[4%] md:right-[3%] z-20">
+      <div className="hidden sm:block xl:hidden w-full max-w-full box-border absolute top-[70px] md:top-[90px] left-1.5 md:left-[2%] right-[4%] md:right-[3%] z-20">
         <div className="flex items-center justify-between gap-2 sm:gap-3">
           <h2 className="font-angkor text-[40px] md:text-[50px] lg:text-[60px] text-white text-left flex-shrink-0">
             ABOUT US
