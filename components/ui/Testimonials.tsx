@@ -1,74 +1,131 @@
+'use client';
+
 import Image from "next/image";
+import { useState, useEffect } from "react";
+
+const testimonials = [
+  { id: 1, name: "Full name", company: "Company Name" },
+  { id: 2, name: "Full name", company: "Company Name" },
+  { id: 3, name: "Full name", company: "Company Name" },
+  { id: 4, name: "Full name", company: "Company Name" },
+  { id: 5, name: "Full name", company: "Company Name" },
+  { id: 6, name: "Full name", company: "Company Name" },
+  { id: 7, name: "Full name", company: "Company Name" },
+  { id: 8, name: "Full name", company: "Company Name" },
+];
 
 export default function Testimonials() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Create extended array for seamless circular loop (duplicate first card at the end)
+  const extendedTestimonials = [...testimonials, testimonials[0]];
+  const totalSlides = testimonials.length; // 8 slides
+
+  // Auto-scroll functionality - only forward direction, one slide at a time
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => {
+        // Move forward by 1, loop back to 0 after reaching the end
+        return (prevIndex + 1) % totalSlides;
+      });
+    }, 4000); // 4 seconds
+
+    return () => clearInterval(interval);
+  }, [totalSlides]);
+
+  const goToNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % totalSlides);
+  };
+
+  const goToPrev = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + totalSlides) % totalSlides);
+  };
+
   return (
-    <section className="relative w-full py-20 flex flex-col items-center">
-      <h2 className="font-angkor text-[75px] text-white mb-20">
-        TESTIMONIALS
-      </h2>
+    <section className="relative w-full pb-8 sm:pb-0 flex flex-col items-center -mt-[50px] sm:mt-0 pt-8 sm:pt-20 md:pt-24 lg:pt-30 px-3 sm:px-4 md:px-6 lg:px-8 overflow-x-hidden">
 
-      <div className="flex flex-col md:flex-row gap-10 justify-center w-full max-w-[1400px]">
-        {/* Testimonial 1 */}
-        <div className="relative w-full max-w-[548px] min-h-[293px] bg-[#d9d9d9] rounded-sm p-6 sm:p-10 shadow-lg">
-           <div className="absolute top-6 sm:top-10 left-6 sm:left-10 w-[50px] sm:w-[66px] h-[50px] sm:h-[66px] rounded-full overflow-hidden">
-             <Image src="/images/ellipse13.svg" alt="Avatar" fill className="object-cover" />
-           </div>
-           
-           <div className="ml-[70px] sm:ml-[90px] mb-6">
-             <h4 className="font-poppins text-[18px] sm:text-[24px] text-black leading-none mb-2">Full name</h4>
-             <p className="font-poppins text-[18px] sm:text-[24px] text-black leading-none">Company Name</p>
-           </div>
-           
-           <div className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 w-[24px] sm:w-[30px] h-[18px] sm:h-[22px]">
-              <Image src="/images/vector.svg" alt="Quote" fill className="object-contain" />
-           </div>
-
-           <div className="font-poppins text-[18px] sm:text-[24px] text-black mt-8">
-             <p>loremjhebgjhdsbkjdvkjdkvhbjdhj</p>
-             <p>hesbdjcsudyub</p>
-             <p>sdbjhbdjhyvhsd</p>
-           </div>
-        </div>
-
-        {/* Testimonial 2 */}
-        <div className="relative w-full max-w-[548px] min-h-[293px] bg-[#d9d9d9] rounded-sm p-6 sm:p-10 shadow-lg">
-           <div className="absolute top-6 sm:top-10 left-6 sm:left-10 w-[50px] sm:w-[66px] h-[50px] sm:h-[66px] rounded-full overflow-hidden">
-             <Image src="/images/ellipse13.svg" alt="Avatar" fill className="object-cover" />
-           </div>
-           
-           <div className="ml-[70px] sm:ml-[90px] mb-6">
-             <h4 className="font-poppins text-[18px] sm:text-[24px] text-black leading-none mb-2">Full name</h4>
-             <p className="font-poppins text-[18px] sm:text-[24px] text-black leading-none">Company Name</p>
-           </div>
-           
-           <div className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 w-[24px] sm:w-[30px] h-[18px] sm:h-[22px]">
-              <Image src="/images/vector.svg" alt="Quote" fill className="object-contain" />
-           </div>
-
-           <div className="font-poppins text-[18px] sm:text-[24px] text-black mt-8">
-             <p>loremjhebgjhdsbkjdvkjdkvhbjdhj</p>
-             <p>hesbdjcsudyub</p>
-             <p>sdbjhbdjhyvhsd</p>
-           </div>
+      {/* Separator - constrained to side lines but preserving unique slope */}
+      <div className="absolute top-0 left-[5%] sm:left-[4%] md:left-[3%] lg:left-[2.5%] xl:left-[2.25%] right-[5%] sm:right-[4%] md:right-[3%] lg:right-[2.5%] xl:right-[2.25%] h-[60px] sm:h-[80px] md:h-[100px] lg:h-[110px] xl:h-[123px] my-10 pointer-events-none -z-10 opacity-60 sm:opacity-70 md:opacity-80">
+        <div className="absolute inset-0 w-full h-full rotate-180 scale-y-[-1]">
+          <Image src="/images/vector11.svg" alt="Separator" fill className="object-contain" />
         </div>
       </div>
 
-       {/* Decorators */}
-       <div className="absolute w-full flex justify-between px-20 top-1/2 -translate-y-1/2 pointer-events-none">
-          <div className="relative w-[25px] h-[60px] rotate-180">
-            <Image src="/images/vector8.svg" alt="Decoration" fill className="object-contain" />
-          </div>
-           <div className="relative w-[25px] h-[60px]">
-            <Image src="/images/vector7.svg" alt="Decoration" fill className="object-contain" />
-          </div>
-       </div>
+      <h2 className="font-angkor text-[28px] leading-[1.1] sm:text-[40px] md:text-[50px] lg:text-[60px] xl:text-[75px] text-white mb-8 sm:mb-8 md:mb-12 xl:mb-20 absolute xl:absolute top-[70px] sm:top-[65px] md:top-[60px] xl:top-[80px] right-[1%] sm:right-[4%] md:right-[7%] xl:right-[5%] z-10 text-right xl:text-right mr-[30px] sm:mr-0">
+        TESTIMONIALS
+      </h2>
 
-        {/* Separator */}
-       <div className="relative w-full h-[123px] my-10">
-          <div className="absolute inset-0 w-full h-full rotate-180 scale-y-[-1]">
-             <Image src="/images/vector11.svg" alt="Separator" fill className="object-contain" />
-          </div>
-       </div>
+      <div className="relative w-full max-w-[1400px] overflow-hidden mx-auto pt-[80px] sm:pt-20 md:pt-24 xl:pt-[240px] mb-0 sm:mb-0">
+        {/* Carousel Container */}
+        <div
+          className="flex transition-transform duration-500 ease-in-out"
+          style={{
+            transform: `translateX(-${currentIndex * 100}%)`
+          }}
+        >
+          {extendedTestimonials.map((testimonial, index) => (
+            <div
+              key={`${testimonial.id}-${index}`}
+              className="relative flex-shrink-0 w-full flex justify-center px-2 sm:px-2"
+            >
+              <div className="relative w-full max-w-[90%] sm:max-w-[548px] min-h-[250px] sm:min-h-[280px] xl:min-h-[293px] bg-[#d9d9d9] rounded-sm p-4 sm:p-6 md:p-8 xl:p-10 shadow-lg mx-auto sm:mx-0 mt-4 mb-0 sm:my-0">
+                <div className="absolute top-4 sm:top-6 md:top-8 xl:top-10 left-4 sm:left-6 md:left-8 xl:left-10 w-[40px] sm:w-[50px] md:w-[60px] xl:w-[66px] h-[40px] sm:h-[50px] md:h-[60px] xl:h-[66px] rounded-full overflow-hidden">
+                  <Image src="/images/ellipse13.svg" alt="Avatar" fill className="object-cover" />
+                </div>
+
+                <div className="ml-[55px] sm:ml-[70px] md:ml-[80px] xl:ml-[90px] mb-4 sm:mb-6">
+                  <h4 className="font-poppins text-[16px] sm:text-[18px] md:text-[20px] xl:text-[24px] text-black leading-none mb-2">{testimonial.name}</h4>
+                  <p className="font-poppins text-[16px] sm:text-[18px] md:text-[20px] xl:text-[24px] text-black leading-none">{testimonial.company}</p>
+                </div>
+
+                <div className="absolute right-3 sm:right-4 md:right-6 xl:right-8 top-1/2 -translate-y-1/2 w-[20px] sm:w-[24px] md:w-[28px] xl:w-[30px] h-[15px] sm:h-[18px] md:h-[20px] xl:h-[22px]">
+                  <Image src="/images/vector.svg" alt="Quote" fill className="object-contain" />
+                </div>
+
+                <div className="font-poppins text-[14px] sm:text-[16px] md:text-[18px] xl:text-[24px] text-black mt-6 sm:mt-8">
+                  <p>loremjhebgjhdsbkjdvkjdkvhbjdhj</p>
+                  <p>hesbdjcsudyub</p>
+                  <p>sdbjhbdjhyvhsd</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Navigation Arrows - Hidden on mobile, visible on tablet and above */}
+        <div className="hidden sm:flex absolute left-0 right-0 justify-between px-4 sm:px-8 md:px-12 xl:px-20 top-[calc(50%)] -translate-y-1/2 pointer-events-none z-20">
+          <button
+            onClick={goToPrev}
+            className="relative w-[20px] sm:w-[22px] md:w-[24px] xl:w-[25px] h-[40px] sm:h-[50px] md:h-[55px] xl:h-[60px] rotate-180 pointer-events-auto cursor-pointer hover:opacity-80 transition-opacity"
+            aria-label="Previous testimonial"
+          >
+            <Image src="/images/vector8.svg" alt="Previous" fill className="object-contain" />
+          </button>
+          <button
+            onClick={goToNext}
+            className="relative w-[20px] sm:w-[22px] md:w-[24px] xl:w-[25px] h-[40px] sm:h-[50px] md:h-[55px] xl:h-[60px] pointer-events-auto cursor-pointer hover:opacity-80 transition-opacity"
+            aria-label="Next testimonial"
+          >
+            <Image src="/images/vector7.svg" alt="Next" fill className="object-contain" />
+          </button>
+        </div>
+      </div>
+
+      {/* Dot Indicators */}
+      <div className="testimonial-dots hidden md:flex gap-3 mt-8 sm:mt-10 mb-0 justify-center items-center">
+        {testimonials.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentIndex(index)}
+            className={`w-[12px] h-[12px] min-w-[12px] min-h-[12px] max-w-[12px] max-h-[12px] rounded-full transition-all duration-300 flex-shrink-0 p-0 border-0 ${currentIndex === index
+              ? 'bg-white opacity-100'
+              : 'bg-white opacity-30 hover:opacity-50'
+              }`}
+            aria-label={`Go to testimonial ${index + 1}`}
+          />
+        ))}
+      </div>
+
     </section>
   );
 }

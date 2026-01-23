@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { 
   Space_Grotesk, 
   Urbanist, 
@@ -55,6 +55,13 @@ const sarpanch = Sarpanch({
 export const metadata: Metadata = {
   title: "ITC India 2026 - IEEE International Test Conference",
   description: "10th IEEE International Test Conference INDIA - An initiative towards India's semiconductor ecosystem",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
 };
 
 export default function RootLayout({
